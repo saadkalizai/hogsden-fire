@@ -363,6 +363,130 @@ body {
         .bm-trada img {
             width: 100%;
         }
+
+/* Add these media queries at the end of your CSS */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .jigsaw-fire,
+    .jigsaw-plug {
+        left: 5%;
+        width: 160px;
+        height: 160px;
+    }
+
+    .hand {
+        width: 280px;
+    }
+
+    @keyframes handMoveIn {
+        0% { left: -300px; }
+        100% { left: 30px; }
+    }
+
+    .hero-text {
+        left: 40%;
+        max-width: 400px;
+    }
+
+    .hero-text h1 {
+        font-size: 30px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 40px 20px;
+    }
+
+    .jigsaw-fire,
+    .jigsaw-plug {
+        position: relative;
+        left: 50%;
+        top: auto;
+        transform: translateX(-50%);
+        width: 140px;
+        height: 140px;
+        margin: 0 auto 40px;
+    }
+
+    .jigsaw-plug.locked {
+        transform: translateX(-50%) scale(1);
+    }
+
+    .hand {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        width: 240px;
+        margin: 0 auto 30px;
+        animation: handMoveInMobile 3s ease forwards;
+    }
+
+    @keyframes handMoveInMobile {
+        0% {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .hero-text {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        max-width: 100%;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .hero-text.show {
+        transform: none;
+    }
+
+    .hero-text h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .cta-btn {
+        font-size: 13px;
+        padding: 12px 30px;
+    }
+
+    .bm-trada {
+        width: 70px;
+        right: 20px;
+        bottom: 20px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .jigsaw-fire,
+    .jigsaw-plug {
+        width: 120px;
+        height: 120px;
+    }
+
+    .hand {
+        width: 200px;
+    }
+
+    .hero-text h1 {
+        font-size: 20px;
+    }
+}
+
 .about-us {
             display: flex;
             align-items: center;
