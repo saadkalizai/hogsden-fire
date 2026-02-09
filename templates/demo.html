@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hogsden Fire - Hero Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            background-color: #000000;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* Main container for the entire animation */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Fire video container - positioned behind the aperture */
+        .fire-video-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        /* Fire video element */
+        .fire-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Clip-path creates the jigsaw puzzle aperture shape */
+            clip-path: url(#jigsawClip);
+        }
+
+        /* Hand animation container - slides in from left */
+        .hand-container {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            z-index: 2;
+            /* Start position: completely off-screen to the left */
+            transform: translateX(-100vw);
+            /* Animation will be triggered via JavaScript */
+        }
+
+        /* The hand image holding the puzzle piece */
+        .hand-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Puzzle piece that will seal the aperture */
+        .puzzle-piece {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            opacity: 0;
+            /* Puzzle piece has jigsaw shape with logo */
+        }
+
+        .puzzle-piece-svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.5));
+        }
+
+        /* SVG definitions for jigsaw shape */
+        svg {
+            position: absolute;
+            width: 0;
+            height: 0;
+        }
+
+        /* Animation keyframes */
+        
+        /* Hand slides in from left, pauses, then completes placement */
+        @keyframes handSlideIn {
+            0% {
+                transform: translateX(-100vw);
+            }
+            40% {
+                transform: translateX(0);
+            }
+            60% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* Puzzle piece fades in and scales into position */
+        @keyframes piecePlace {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        /* Fire video fades out as piece seals the aperture */
+        @keyframes fireFadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* Applied classes when animation triggers */
+        .hand-container.animate {
+            animation: handSlideIn 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .puzzle-piece.animate {
+            animation: piecePlace 1s cubic-bezier(0.4, 0, 0.2, 1) 2.5s forwards;
+        }
+
+        .fire-video.fade-out {
+            animation: fireFadeOut 0.8s ease-out 3.2s forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- SVG definitions for jigsaw puzzle clip-path -->
+    <svg xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <!-- Jigsaw puzzle piece clip-path - defines the aperture shape -->
+            <clipPath id="jigsawClip" clipPathUnits="objectBoundingBox">
+                <!-- Main square base of puzzle piece (scaled to 0-1 range for objectBoundingBox) -->
+                <path d="M 0.35 0.3 
+                         L 0.45 0.3 
+                         Q 0.46 0.25, 0.5 0.25 
+                         Q 0.54 0.25, 0.55 0.3 
+                         L 0.65 0.3 
+                         L 0.65 0.4 
+                         Q 0.7 0.41, 0.7 0.45 
+                         Q 0.7 0.49, 0.65 0.5 
+                         L 0.65 0.6 
+                         L 0.55 0.6 
+                         Q 0.54 0.65, 0.5 0.65 
+                         Q 0.46 0.65, 0.45 0.6 
+                         L 0.35 0.6 
+                         L 0.35 0.5 
+                         Q 0.3 0.49, 0.3 0.45 
+                         Q 0.3 0.41, 0.35 0.4 
+                         Z" />
+            </clipPath>
+        </defs>
+    </svg>
+
+    <div class="hero-container">
+        <!-- Fire video with jigsaw aperture mask -->
+        <div class="fire-video-container">
+            <video autoplay muted loop playsinline>
+            <source src="{{ url_for('static', filename='videos/fire.mp4') }}" type="video/mp4">
+        </video>
+        </div>
+
+        <!-- Hand holding puzzle piece - slides in from left -->
+        <div class="hand-container">
+            <!-- Replace with actual photoreal hand asset -->
+            <img class="hand-image" src="hand.png" alt="Hand holding puzzle piece">
+        </div>
+
+        <!-- Final puzzle piece that seals the aperture -->
+        <div class="puzzle-piece">
+            <svg class="puzzle-piece-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                <!-- Black jigsaw piece background -->
+                <path d="M 140 120 
+                         L 180 120 
+                         Q 184 100, 200 100 
+                         Q 216 100, 220 120 
+                         L 260 120 
+                         L 260 160 
+                         Q 280 164, 280 180 
+                         Q 280 196, 260 200 
+                         L 260 240 
+                         L 220 240 
+                         Q 216 260, 200 260 
+                         Q 184 260, 180 240 
+                         L 140 240 
+                         L 140 200 
+                         Q 120 196, 120 180 
+                         Q 120 164, 140 160 
+                         Z" 
+                         fill="#000000" 
+                         stroke="#1a1a1a" 
+                         stroke-width="2"/>
+                
+                <!-- Hogsden Fire logo on the puzzle piece -->
+                <!-- Replace this with actual logo SVG or image -->
+                <g transform="translate(200, 180)">
+                    <!-- Shield icon as placeholder logo -->
+                    <path d="M 0 -40 
+                             L -30 -30 
+                             L -30 -10 
+                             Q -30 20, 0 40 
+                             Q 30 20, 30 -10 
+                             L 30 -30 
+                             Z" 
+                             fill="#dc2626"/>
+                    <path d="M -5 5 L 0 10 L 15 -10 L 10 -15 L 0 0 L -5 -5 Z" 
+                             fill="#ffffff" 
+                             transform="translate(-5, 0)"/>
+                </g>
+            </svg>
+        </div>
+    </div>
+
+<script src="{{ url_for('static', filename='js/demo.js') }}"></script>
+
+    <!-- 
+    ASSET REQUIREMENTS:
+    
+    1. fire.mp4 - Looping video of roaring fire
+       - Should be high quality, seamless loop
+       - Recommended resolution: 1920x1080 or higher
+    
+    2. hand-with-puzzle.png - Photoreal hand holding black puzzle piece
+       - Hand should enter from left side
+       - Puzzle piece should have Hogsden Fire logo
+       - Transparent background (PNG)
+       - High resolution for crisp display
+    
+    HOW IT WORKS:
+    
+    1. JIGSAW APERTURE MASK:
+       - SVG clip-path (#jigsawClip) creates puzzle-piece shaped opening
+       - Applied to fire video via CSS clip-path property
+       - Fire is only visible through this jigsaw shape
+    
+    2. HAND ANIMATION:
+       - Hand container starts off-screen left (translateX(-100vw))
+       - Slides in smoothly using cubic-bezier easing
+       - Pauses briefly in center position
+    
+    3. PUZZLE PIECE PLACEMENT:
+       - Separate puzzle piece element with logo
+       - Fades in and scales up as hand reaches position
+       - Positioned to perfectly align with aperture
+    
+    4. FIRE BLOCKING:
+       - Fire video fades out as puzzle piece appears
+       - Creates visual effect of fire being sealed/stopped
+       - Final state shows black puzzle piece in place, fire hidden
+    -->
+</body>
+</html>

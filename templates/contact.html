@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us | Hogsden Fire</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav class="main-nav">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/contact" class="nav-link">Contact Us</a>
+</nav>
+
+
+<section class="contact-page">
+
+    <!-- LEFT COLUMN -->
+    <div class="contact-info">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Hogsden Fire" class="contact-logo">
+
+        <div class="contact-details">
+            <p><strong>Email</strong><br>info@hogsdenfire.com</p>
+
+            <p><strong>Phone</strong><br>
+                Paul: 07977 142994<br>
+                Josh: 07782 657165<br>
+                Office: 020 8079 9523
+            </p>
+
+            <!-- Address placeholder (easy to change later) -->
+            <p><strong>Office Address</strong><br>
+                Address to be updated
+            </p>
+        </div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="contact-form-wrapper">
+        <form method="POST" class="contact-form">
+
+            <input type="text" name="company" placeholder="Company Name" required>
+            <input type="text" name="name" placeholder="Contact Name" required>
+            <input type="text" name="phone" placeholder="Phone Number">
+            <input type="email" name="email" placeholder="Email" required>
+
+            <textarea name="requirements" placeholder="Requirements" rows="5"></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</section>
+<footer class="main-footer">
+    <p>&copy; 2026 Hogsden Fire. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
