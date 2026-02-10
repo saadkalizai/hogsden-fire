@@ -61,9 +61,8 @@
             
             // Hide hand when logo appears
             setTimeout(() => {
-                hand.classList.add('hidden');
-            }, 300);
-
+            hand.classList.add('hidden');
+            }, 0);
             // Block fire after plug locks
             setTimeout(() => {
                 jigsawFire.classList.add('blocked');

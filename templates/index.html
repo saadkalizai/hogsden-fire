@@ -20,6 +20,7 @@
     <section class="hero">
 
         <!-- Fire video masked inside jigsaw -->
+        <div class="jigsaw-wrapper">
         <div class="jigsaw-fire">
             <video autoplay muted loop playsinline>
                 <source src="{{ url_for('static', filename='videos/fire.mp4') }}" type="video/mp4">
@@ -30,12 +31,14 @@
         <div class="jigsaw-plug">
             <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Hogsden Fire">
         </div>
-
+        
+        
         <!-- Hand holding jigsaw piece -->
         <div class="hand">
             <img src="{{ url_for('static', filename='images/hand.png') }}" alt="Hand holding jigsaw">
         </div>
-
+        </div>
+        
         <!-- Text content -->
         <div class="hero-text">
             <h1>Protecting your environment with passive fire stopping</h1>
