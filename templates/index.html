@@ -11,198 +11,79 @@
 <body>
 
     <nav class="main-nav">
-    <a href="/" class="nav-link">Home</a>
+    
     <a href="/contact" class="nav-link">Contact Us</a>
 </nav>
 
 
-<!-- HERO SECTION -->
-    <section class="hero">
+<section class="hero">
 
-        <!-- Fire video masked inside jigsaw -->
-        <div class="jigsaw-wrapper">
-        <div class="jigsaw-fire">
-            <video autoplay muted loop playsinline>
-                <source src="{{ url_for('static', filename='videos/fire.mp4') }}" type="video/mp4">
-            </video>
-        </div>
-
-        <!-- Jigsaw plug that blocks the fire -->
-        <div class="jigsaw-plug">
-            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Hogsden Fire">
-        </div>
-        
-        
-        <!-- Hand holding jigsaw piece -->
-        <div class="hand">
-            <img src="{{ url_for('static', filename='images/hand.png') }}" alt="Hand holding jigsaw">
-        </div>
-        </div>
-        
-        <!-- Text content -->
-        <div class="hero-text">
-            <h1>Protecting your environment with passive fire stopping</h1>
-            <a href="/contact" class="cta-btn">Contact Us</a>
-        </div>
-
-        <!-- BM TRADA Logo -->
-        <div class="bm-trada">
-            <img src="bm_trada.png" alt="BM TRADA">
-        </div>
-
-    </section>
-
-<!-- ABOUT US SECTION -->
-<section class="about-us">
-        <!-- LEFT: TEXT -->
-        <div class="about-text">
-            <h2>About Hogsden Fire</h2>
-            <p>
-                Hogsden Fire specializes in passive fire stopping solutions, ensuring your environment
-                remains safe and compliant. Our expert team combines innovative technology with 
-                decades of industry experience to protect people and property effectively.
-            </p>
-            <p>
-                We focus on quality, precision, and reliability, delivering solutions that give
-                peace of mind in any industrial or commercial space.
-            </p>
-        </div>
-
-        <!-- RIGHT: IMAGE -->
-        <div class="about-image">
-            <div class="about-image-wrapper loading">
-                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80" alt="Professional fire safety equipment and red pipes installation" loading="lazy">
-            </div>
-        </div>
-    </section>
+    <!-- Fire video masked inside jigsaw -->
+    <div class="jigsaw-wrapper">
+    <!-- 8-second intro video -->
+    <video class="intro-video" autoplay muted playsinline>
+        <source src="{{ url_for('static', filename='videos/intro.mp4') }}" type="video/mp4">
+    </video>
+    
+    <!-- Logo that appears after video -->
+    <div class="logo-container">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Hogsden Fire">
+        <div class="logo-text">Passive Fire Protection</div>
+    </div>
+</div>
 
 
-<section class="solutions-section">
-        <div class="section-header">
-            <h2>Comprehensive Fire Protection Solutions</h2>
-            <p>We specialise in passive fire stopping systems that prevent the spread of fire and smoke, protecting lives and property</p>
-        </div>
-
-        <div class="solutions-grid">
-            <!-- Card 1: Fire Stopping Installation -->
-            <div class="solution-card" data-card="1">
-                <div class="card-image-wrapper loading">
-                    <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=800&q=80" alt="Fire stopping installation with industrial pipes and barriers" loading="lazy">
+    <!-- Logo Carousel - appears after animation -->
+    <div class="logo-carousel">
+        <div class="carousel-content">
+            <div class="carousel-track">
+                <!-- Duplicate the logos twice for seamless loop -->
+                <div class="logo-item">
+                    <img src="{{ url_for('static', filename='images/partner_1.png') }}" alt="Partner Logo 1">
                 </div>
-                <div class="card-content">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
-                        </svg>
-                    </div>
-                    <h3>Fire Stopping Installation</h3>
-                    <p>Professional installation of fire barriers, seals, and compartmentation systems to prevent fire spread through walls, floors, and service penetrations</p>
+                <div class="logo-item">
+                    <img src="{{ url_for('static', filename='images/partner_2.png') }}" alt="Partner Logo 2">
                 </div>
-            </div>
-
-            <!-- Card 2: Fire Safety Assessments -->
-            <div class="solution-card" data-card="2">
-                <div class="card-image-wrapper loading">
-                    <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=800&q=80" alt="Fire safety equipment with red pipes and safety cabinet" loading="lazy">
+                <div class="logo-item">
+                    <img src="{{ url_for('static', filename='images/partner_3.png') }}" alt="Partner Logo 3">
                 </div>
-                <div class="card-content">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-                        </svg>
-                    </div>
-                    <h3>Fire Safety Assessments</h3>
-                    <p>Thorough inspection and assessment of your premises to identify fire risks and ensure compliance with current building regulations and safety standards</p>
+                <div class="logo-item">
+                    <img src="{{ url_for('static', filename='images/partner_4.png') }}" alt="Partner Logo 4">
                 </div>
-            </div>
-
-            <!-- Card 3: Compliance & Certification -->
-            <div class="solution-card" data-card="3">
-                <div class="card-image-wrapper loading">
-                    <img src="https://images.unsplash.com/photo-1590402494682-cd3fb53b1f70?w=800&q=80" alt="Safety worker in orange uniform performing fire safety inspection" loading="lazy">
+                <div class="logo-item">
+                    <img src="{{ url_for('static', filename='images/partner_5.png') }}" alt="Partner Logo 5">
                 </div>
-                <div class="card-content">
-                    <div class="card-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
-                        </svg>
-                    </div>
-                    <h3>Compliance & Certification</h3>
-                    <p>Expert guidance on building regulations compliance with full documentation and certification for all passive fire protection works completed</p>
+                <!-- Duplicate for seamless loop -->
+                <div class="logo-item">
+                    <img src="{{ url_for('static', filename='images/partner_1.png') }}" alt="Partner Logo 1">
+                </div>
+                <div class="logo-item">
+                    <img src="{{ url_for('static', filename='images/partner_2.png') }}" alt="Partner Logo 2">
+                </div>
+                <div class="logo-item">
+                    <img src="{{ url_for('static', filename='images/partner_3.png') }}" alt="Partner Logo 3">
+                </div>
+                <div class="logo-item">
+                    <img src="{{ url_for('static', filename='images/partner_4.png') }}" alt="Partner Logo 4">
+                </div>
+                <div class="logo-item">
+                    <img src="{{ url_for('static', filename='images/partner_5.png') }}" alt="Partner Logo 5">
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section class="why-choose-section">
-        <div class="content-wrapper">
-            <div class="text-content">
-                <h2>Why Choose Passive Fire Stopping?</h2>
-                <p>Passive fire protection is your first line of defence against the spread of fire and smoke. Unlike active systems, passive measures work without the need for activation, providing continuous, reliable protection 24/7.</p>
+    <!-- BM TRADA Logo -->
+    <div class="bm-trada">
+        <img src="{{ url_for('static', filename='images/bm_trada.png') }}" alt="BM TRADA">
+    </div>
 
-                <div class="features-list">
-                    <div class="feature-item" data-feature="1">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                            </svg>
-                        </div>
-                        <div class="feature-text">
-                            <h3>Increased Escape Time</h3>
-                            <p>Compartmentation slows fire spread, giving occupants more time to evacuate safely</p>
-                        </div>
-                    </div>
+</section>
 
-                    <div class="feature-item" data-feature="2">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.8l6 5.4V18h-2v-6H8v6H6v-6.8l6-5.4z"/>
-                            </svg>
-                        </div>
-                        <div class="feature-text">
-                            <h3>Property Protection</h3>
-                            <p>Contain fire damage to specific areas, minimising destruction and reducing repair costs</p>
-                        </div>
-                    </div>
 
-                    <div class="feature-item" data-feature="3">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6zm10-10H8v2h8v-2zm0 4H8v2h8v-2z"/>
-                            </svg>
-                        </div>
-                        <div class="feature-text">
-                            <h3>Regulatory Compliance</h3>
-                            <p>Meet building regulations and insurance requirements with certified fire protection systems</p>
-                        </div>
-                    </div>
 
-                    <div class="feature-item" data-feature="4">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
-                            </svg>
-                        </div>
-                        <div class="feature-text">
-                            <h3>Cost-Effective Protection</h3>
-                            <p>No ongoing maintenance or power required – passive systems work reliably year after year</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="image-content">
-                <div class="image-wrapper loading">
-                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80" alt="Aerial view of red fire suppression pipes and equipment" loading="lazy">
-                    <div class="resistance-badge">
-                        <div class="time">30-120</div>
-                        <div class="label">Minutes Fire Resistance</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    
     <section class="process-section">
         <div class="section-header">
             <h2>Our Process</h2>

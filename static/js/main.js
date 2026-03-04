@@ -47,35 +47,33 @@
     // HERO SECTION - JIGSAW ANIMATION
     // =============================================================================
 
-    const initHeroAnimation = () => {
-        const jigsawPlug = safeQuery('.jigsaw-plug');
-        const jigsawFire = safeQuery('.jigsaw-fire');
-        const hand = safeQuery('.hand');
-        const heroText = safeQuery('.hero-text');
+const initHeroAnimation = () => {
+    const introVideo = safeQuery('.intro-video');
+    const logoContainer = safeQuery('.logo-container');
+    const logoCarousel = safeQuery('.logo-carousel');
 
-        if (!jigsawPlug || !jigsawFire || !hand || !heroText) return;
+    if (!introVideo || !logoContainer) return;
 
-        // After hand animation completes (3s), lock the plug in place
+    // When video ends (8 seconds)
+    introVideo.addEventListener('ended', () => {
+        // Fade out video to black
+        introVideo.classList.add('fade-out');
+        
+        // Show logo after video fades out
         setTimeout(() => {
-            jigsawPlug.classList.add('locked');
+            logoContainer.classList.add('show');
             
-            // Hide hand when logo appears
+            // Show carousel 1 second after logo appears
             setTimeout(() => {
-            hand.classList.add('hidden');
-            }, 0);
-            // Block fire after plug locks
-            setTimeout(() => {
-                jigsawFire.classList.add('blocked');
-            }, 600);
+                if (logoCarousel) {
+                    logoCarousel.classList.add('visible');
+                }
+            }, 1000);
+        }, 500);
+    });
+};
 
-            // Show text content
-            setTimeout(() => {
-                heroText.classList.add('show');
-            }, 800);
-        }, 3000);
-    };
-
-    // =============================================================================
+// =============================================================================
     // ABOUT US SECTION - IMAGE ANIMATION
     // =============================================================================
 
