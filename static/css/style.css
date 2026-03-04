@@ -201,7 +201,7 @@ body {
         .bm-trada {
             position: fixed;
             right: 30px;
-            bottom: 30px;
+            bottom: 80px;
             width: 90px;
         }
 
@@ -430,16 +430,28 @@ body {
         
 
         .process-section {
-            padding: 100px 20px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+    padding: 100px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;  /* Important - allows absolute positioning of logo */
+}
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 80px;
-            animation: fadeInUp 0.8s ease-out;
-        }
+.process-logo {
+    position: absolute;
+    left: 80px;
+    top: 100px;
+    width: 120px;
+    height: auto;
+    opacity: 1;
+    z-index: 1;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 80px;
+    animation: fadeInUp 0.8s ease-out;
+    position: relative;  /* Ensures heading stays centered */
+}
 
         .section-header h2 {
             font-size: 3rem;
