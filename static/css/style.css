@@ -678,10 +678,16 @@ body {
                 padding: 60px 16px;
             }
 
-            .section-header {
-                margin-bottom: 50px;
-            }
+            .process-logo {
+        position: static;        /* Remove absolute positioning */
+        display: block;
+        margin: 0 auto 30px;     /* Center it and add space below */
+        width: 100px;            /* Slightly smaller on mobile */
+    }
 
+    .section-header {
+        margin-bottom: 60px;     /* Adjust spacing */
+    }s
             .section-header h2 {
                 font-size: 2rem;
                 margin-bottom: 16px;
