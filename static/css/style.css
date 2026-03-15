@@ -1104,6 +1104,7 @@ body {
 .contact-logo {
     width: 180px;
     margin-bottom: 40px;
+    border-radius: 12px;
 }
 
 .contact-details p {
